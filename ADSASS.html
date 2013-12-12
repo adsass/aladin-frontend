@@ -1,0 +1,504 @@
+<HTML>
+<head>
+<meta charset="utf-8" />
+
+<link rel="stylesheet" href="layout.css">
+
+
+    <link rel="stylesheet" href="http://code.jquery.com/ui/1.10.3/themes/smoothness/jquery-ui.css" />
+    <link rel="stylesheet" href="./introjs.css" />
+    <script src="http://code.jquery.com/jquery-1.9.1.js"></script>
+    <script src="http://code.jquery.com/ui/1.10.3/jquery-ui.js"></script>
+    <script src="./intro.js"></script>
+
+
+<!-- Latest compiled and minified CSS -->
+<link rel="stylesheet" href="http://netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap.min.css">
+
+<!-- Latest compiled and minified JavaScript -->
+<script src="http://netdna.bootstrapcdn.com/bootstrap/3.0.0/js/bootstrap.min.js"></script>
+
+
+
+    <title>ADS All-Sky survey on Aladin Lite</title>
+
+      </head>
+
+    <body>
+
+<nav class="navbar navbar-default" role="navigation">
+  <!-- Brand and toggle get grouped for better mobile display -->
+  <div class="navbar-header">
+    <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-ex1-collapse">
+      <span class="sr-only">Toggle navigation</span>
+      <span class="icon-bar"></span>
+      <span class="icon-bar"></span>
+      <span class="icon-bar"></span>
+    </button>
+    <a data-step="1" data-intro="Hi and welcome to the ADSASS! Click Next to navigate this tour." class="navbar-brand" href="#">The ADS All Sky Survey</a>
+
+  </div>
+
+  <!-- Collect the nav links, forms, and other content for toggling -->
+  <div class="collapse navbar-collapse navbar-ex1-collapse">
+    <ul class="nav navbar-nav">
+      <li><a href="about.html"><span class="glyphicon glyphicon-bullhorn"></span> About</a></li>
+      <li><a href="videos.html"><span class="glyphicon glyphicon-play"></span> Watch videos</a></li>
+      <li><a data-step="2" data-intro="You can come back to the tour anytime from here." href="javascript:void(0);" onclick="javascript:introJs().setOption('showBullets', false).start();">
+        <span class="glyphicon glyphicon-info-sign"></span> Tour 
+      </a>
+
+
+      <li><a href="http://adsass.s3-website-us-west-2.amazonaws.com/" id='wwt-link' target="_blank"><span class="glyphicon glyphicon-new-window"></span> Open WWT version</a></li>
+    </ul>
+
+    <p class="navbar-text pull-right">Astronomy articles. In the sky.</p>
+  </div><!-- /.navbar-collapse -->
+</nav>
+
+
+<!-- Docs nav
+================================================== -->
+<div class="container">
+
+<div class="well">
+
+  <button data-step="10" data-position="left" data-intro="Last, but not least: how about using this map as a visual search tool? Click here and drag a rectangular shape around the objects you are interested in. You will get a list of selected objects and the papers that discuss them." type="button" class="btn btn-danger pull-right" style="margin:0 10 0 10" id="selectBtn">Select tool</button>
+
+  <div data-step="4" data-intro="This map is based on virtually ALL papers ever published in astronomy. But you can filter the articles shown in this map using facets." class="well-title">FILTER BY</div>
+
+   <span id="facetsList">
+      <span class="label label-info">Object</span> 
+        <a class="activia" href="http://cdsannotations.u-strasbg.fr/ADSAllSkySurvey/SimbadHeatMaps/healpix/allSources">All</a>&nbsp;
+        <a data-step="5" data-intro="For example, click on <b>Stars</b> to visualize only articles written about stars." href="http://cdsannotations.u-strasbg.fr/ADSAllSkySurvey/SimbadHeatMaps/healpix/Star">Stars</a>&nbsp;
+        <a href="http://cdsannotations.u-strasbg.fr/ADSAllSkySurvey/SimbadHeatMaps/healpix/Galaxy">Galaxies</a>&nbsp;
+        <a href="http://cdsannotations.u-strasbg.fr/ADSAllSkySurvey/SimbadHeatMaps/healpix/HII-region">HII regions</a>&nbsp;
+        <a href="http://cdsannotations.u-strasbg.fr/ADSAllSkySurvey/SimbadHeatMaps/healpix/Nebula">Nebulae</a>&nbsp;
+        <a href="http://cdsannotations.u-strasbg.fr/ADSAllSkySurvey/SimbadHeatMaps/healpix/Other">Other</a>&nbsp;&nbsp;&nbsp;&nbsp;
+      <br><span class="label label-info">Band</span> 
+        <a data-step="6" data-intro="Facets also work for bandwidth. For example, click on Radio, to see how the sky looks to radio astronomers (based on their scholarly output)" href="http://cdsannotations.u-strasbg.fr/ADSAllSkySurvey/SimbadHeatMaps/healpix/Radio">Radio</a>&nbsp;
+        <a href="http://cdsannotations.u-strasbg.fr/ADSAllSkySurvey/SimbadHeatMaps/healpix/Infrared">Infrared</a>&nbsp;
+        <a href="http://cdsannotations.u-strasbg.fr/ADSAllSkySurvey/SimbadHeatMaps/healpix/UV">Ultraviolet</a>&nbsp;
+        <a href="http://cdsannotations.u-strasbg.fr/ADSAllSkySurvey/SimbadHeatMaps/healpix/X">X-ray</a>&nbsp;&nbsp;&nbsp;&nbsp;  
+      <br><span class="label label-info">Custom</span> 
+        <a data-step="8" data-intro="We have some custom facets too. For example, click here to show what parts of the sky have been studied by authors of the <b>Harvard-Smithsonian Center for Astrophysics</b>" href="http://cdsannotations.u-strasbg.fr/ADSAllSkySurvey/harvard-ads-authors/HiPS">Harvard/CfA</a>&nbsp;&nbsp;&nbsp;&nbsp;
+  </span>
+
+  <br><span class="label label-info">Year </span>
+    <div data-step="7" data-intro="Interested in a specific timeframe? Move the year slider and display how the sky looked in 2000, 1990, or 1850(!), for example, based on astronomy articles published in those years." style="margin-left:14px; display: inline-block;" id="slider-year"></div><input type="text" id="year" class="hide-element" style="margin-left: 8px;   font-weight: bold; color: #ffffff;background-color: #b6b6b6;padding: 2px;border: 1px dashed darkgray;border-radius: 5px; width: 85px;" />
+
+    <!-- TODO temporarily hiding note
+    <div id="explain-note"></div> -->
+
+
+  <div style="margin-top:10px" class="well-title">TOGGLE BASE LAYER</div>
+
+   <span id="toggleList">
+        <a href="P/Mellinger/color">Mellinger</a>&nbsp;  
+        <a href="P/DSS2/color">DSS</a>&nbsp;  
+        <a href="P/GALEXGR6/AIS/color">GALEX AIS</a>&nbsp;  
+        <a href="P/DSS2/red">DSS2 Red</a>&nbsp;  
+        <a href="P/IRIS/color">IRIS</a>&nbsp;  
+        <a href="P/2MASS/color">2MASS</a>&nbsp;  
+        <a data-step="9" data-intro="Now, how about comparing these heatmap with some actual sky images? Click on these surveys to toggle the last loaded heatmap with a base layer." href="P/Finkbeiner">Halpha</a>&nbsp;  
+        <a href="P/VTSS/Ha">VTSS</a>&nbsp;  
+  </span>
+
+</div>
+
+<div class="row">
+
+  <div class="span12">
+
+    <div data-step="3" data-position="top" data-intro="This is a heatmap of the sky built from astronomy articles. The more an object position is referenced in the literature, the <em>hotter</em> it is. Cool, no?" ></div>
+    <!-- insert this snippet where you want Aladin Lite viewer to appear and after the loading of jQuery -->
+    <div id="aladin-lite-div" style="width:1200px;height:520px;"></div>
+
+
+    <!-- Modal -->
+    <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+      <div class="modal-dialog">
+        <div class="modal-content">
+          <div class="modal-header">
+            <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+            <h4 class="modal-title">Selected papers/objects &nbsp;&nbsp;<span id="explain-biblist"></span></h4>
+          </div>
+          <div class="modal-body">
+
+            <div class="tabbable">
+              <ul class="nav nav-tabs">
+                <li class="active"><a href="#tab-papers" data-toggle="tab">Papers</a></li>
+                <li><a href="#tab-objects" data-toggle="tab">Objects</a></li>
+                <!-- <li><a href="#citation-paste" data-toggle="tab">Paste in bibtex entry</a></li> -->
+              </ul>
+              <div class="tab-content">
+                <div id="tab-papers" class="tab-pane active">
+                  <br><div id="explain"></div>
+                </div>
+                <div id="tab-objects" class="tab-pane">
+                  <br><div id="explain-objects"></div>
+                </div>
+              </div><!-- /.tab-content -->
+            </div><!-- /.tabbable -->
+
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+          </div>
+        </div><!-- /.modal-content -->
+      </div><!-- /.modal-dialog -->
+    </div><!-- /.modal -->
+
+    <br>
+
+  </div>
+</div>
+
+</div> <!-- container -->
+    <!-- Footer
+    ================================================== -->
+
+    <div id="footer">
+      <div class="container"><center>
+        <h4 data-step="11" data-position="top" data-intro="Like most stuff in science, the ADSASS is a truly collaborative effort. We thank very much our friends, colleagues, and funders. We use the ADS as our bibliographic source and the CDS as our object database. The cool visualization tools showcased here are Aladin Lite by the Strasbourg astronomical Data Center (CDS) and the Microsoft Research World Wide Telescope. Enjoy!" >ADS All-Sky Survey is a NASA-funded project</h4>
+        <p class="text-muted credit" style="max-width:700px">The ADSASS is a collaboration of the Harvard-Smithsonian Center for Astrophysics, Harvard University, the Strasbourg astronomical Data Center (CDS), and Microsoft Research. </p> <a href="http://projects.iq.harvard.edu/seamlessastronomy/">Seamless Astronomy</a>&nbsp;·&nbsp;<a href="http://adslabs.org">ADS Labs</a>&nbsp;·&nbsp;<a href="http://cdsweb.u-strasbg.fr/">CDS</a>
+      </center></div>
+    </div>
+
+</body>​
+
+<link rel="stylesheet" href="http://aladin.u-strasbg.fr/AladinLite/api/v2/latest/aladin.min.css" />
+<script type="text/javascript" src="http://aladin.u-strasbg.fr/AladinLite/api/v2/latest/aladin.min.js" charset="utf-8"></script>
+
+
+<script type="text/javascript">
+
+    var years = ["date-pre1800_512", "date-1800_1850_512", "date-1850_1900_512", "date-1900_1910_512",
+        "date-1910_1920_512", "date-1920_1930_512", "date-1930_1940_512", "date-1940_1945_512", "date-1945_1950_512",
+        "date-1950_1955_512", "date-1955_1960_512", "date-1960_1965_512", "date-1965_1970_512", "date-1970_1975_512",
+        "date-1975_1980_512", "date-1980_1985_512", "date-1985_1990_512", "date-1990_512", "date-1991_512",
+        "date-1992_512", "date-1993_512", "date-1994_512", "date-1995_512", "date-1996_512", "date-1997_512",
+        "date-1998_512", "date-1999_512", "date-2000_512", "date-2001_512", "date-2002_512", "date-2003_512",
+        "date-2004_512", "date-2005_512", "date-2006_512", "date-2007_512", "date-2008_512", "date-2009_512",
+        "date-2010_512", "date-2011_512", "date-2012_512", "date-2013_512"
+    ];
+
+    $('a').click(function (){
+      $( "#year" ).removeClass('active');
+      $( "#year" ).addClass('hide-element');      
+      $('a').removeClass('activia');
+      $(this).addClass('activia');
+      $('.navbar a').removeClass('activia');
+    });
+
+    var lastHeatMap = "http://cdsannotations.u-strasbg.fr/ADSAllSkySurvey/SimbadHeatMaps/healpix/allSources"
+    var lastHeatMapText = "All"
+
+    var ra = parseFloat(getParameter('ra') || '0');
+    var dec = parseFloat(getParameter('dec') || '0');
+    var fov = parseFloat(getParameter('fov') || '180');
+    var layer = (getParameter('layer') || 'allSources');
+
+    var aladin = $.aladin('#aladin-lite-div', {survey: "P/Mellinger/color", zoom: fov});
+    aladin.setImageSurvey(aladin.createImageSurvey(layer, layer, "http://cdsannotations.u-strasbg.fr/ADSAllSkySurvey/SimbadHeatMaps/healpix/" + layer, 'equatorial', 3));
+    aladin.getBaseImageLayer().getColorMap().update('rainbow');
+    aladin.gotoPosition(ra, dec)
+
+    //var cat = aladin.createCatalogFromVOTable('http://cdsxmatch.u-strasbg.fr/QueryCat/QueryCat?catName=SIMBAD&mode=cone&pos=North+Celestial+Pole&r=240arcmin&format=votable&limit=5000');
+    //aladin.addCatalog(cat);
+
+    var cat = aladin.createProgressiveCatalog('http://alasky.u-strasbg.fr/cats/SIMBAD', 'galactic', 8, {name: 'Prog. SIMBAD', sourceSize: 4});
+    aladin.addCatalog(cat);
+
+    cat.hide();
+    
+    var output_objects = '';
+
+    aladin.on('select', function(sources) {
+
+        $('#selectBtn').html('<span class="glyphicon glyphicon-cloud"></span> Loading...');
+        $('#selectBtn').removeClass('btn-danger');
+        $('#selectBtn').addClass('btn-info');        
+        var simbadUrl = 'http://simbad.harvard.edu/simbad/sim-script';
+        var script = 'output script=off';
+        script += '\noutput console=off';
+        script += '\noutput error=off';
+
+        script += '\nformat object f1 "%BIBCODELIST(R;;1000;%B | %1A | %J)"';
+        
+        console.log(script)
+
+        var s;
+        for (var k=0; k<sources.length; k++) {
+            s = sources[k];
+            s.select();
+            if (s.data && s.data.MAIN_ID) {
+                output_objects += '<a target="_blank" href="http://simbad.u-strasbg.fr/simbad/sim-basic?Ident=' + encodeURIComponent(s.data.MAIN_ID) + '">' + s.data.MAIN_ID + ' (' + s.data.RA + ' ' + s.data.DEC + ')' + '</a><br>';
+                script += '\nquery ' + s.data.MAIN_ID;
+            }
+            else {
+                //html += '\nUnknown';
+            }
+        }
+
+        $.ajax({ url: simbadUrl, type: "POST", data: {'submit': 'submit script', 'script': script}, success: function(data) { 
+          console.log(data);
+          var output = '';
+          result = data.split(/\r?\n/); 
+          uresult = unique(result);
+          var biblist = [];
+          truncated = false;
+
+          //trim list of papers to 120 to avoid URL too long to fail
+          if (uresult.length > 201){
+            truncated = true;
+            paper_length = 201;
+          }
+          else{
+            paper_length = uresult.length;
+            truncated = false;
+          }
+
+          if (truncated){
+            output += "<p class='small text-danger'>Note: List truncated to 200 most recent papers</p>"
+          }
+
+
+          for (var i = 0; i < paper_length; i++) {
+              if (!!uresult[i]){ 
+                output += '<a target="_blank" href="http://adsabs.harvard.edu/abs/' + encodeURIComponent(uresult[i].split('|')[0]) + '">' + uresult[i].split('|')[1].trim() + ' ' + uresult[i].split('|')[2].trim() + '</a><br>';
+                biblist.push(encodeURIComponent(uresult[i].split('|')[0]))
+              }
+          }
+
+          output_objects_page = "<h1>Object list</h1>" + output_objects
+
+          biblist = biblist + "";
+          biblist = biblist.replace(/\,/g, 'OR%20');
+          biblist = '<a class="btn btn-default" type="button" target="_blank" href="http://labs.adsabs.harvard.edu/ui/cgi-bin/topicSearch?q=bibcode:(' + biblist + ')">Open papers in ADS</a>&nbsp;<a class="btn btn-default" type="button" href="javascript:void(0);" onclick="var x=window.open();x.document.open();x.document.write(output_objects_page);x.document.close();">Open object list</a>';
+
+          $('#explain-biblist').html(biblist);
+
+          $('#explain').html(output);
+
+          $('#explain-objects').html(output_objects);
+
+          $('#myModal').modal()
+
+          cat.deselectAll();
+          cat.hide();
+
+          $('#selectBtn').html('Select tool');
+          $('#selectBtn').removeClass('btn-info');
+          $('#selectBtn').addClass('btn-danger');
+         } });
+
+    });
+
+    function getParameter(name) {
+        // this next line is why I hate JavaScript
+        name = name.replace(/[\[]/, "\\\[").replace(/[\]]/, "\\\]");
+
+        var regex = new RegExp("[\\?&]" + name + "=([^&#]*)"),
+            results = regex.exec(location.search);
+
+        return results === null ? "" : decodeURIComponent(results[1].replace(/\+/g, " "));
+    }
+
+    function unique(array){
+        return array.filter(function(el, index, arr) {
+            return index == arr.indexOf(el);
+        });
+    }
+
+    $(document).ready(function() {
+      ($('#facetsList a')).click(function(e) {
+        e.preventDefault();
+        var url = $(this).attr('href');
+        var linktext = $(this).text();
+        $(this).text('Loading...');
+        aladin.setImageSurvey(aladin.createImageSurvey(linktext, linktext, url, 'equatorial', 3));
+        aladin.getBaseImageLayer().getColorMap().update('rainbow');
+        setTimeout(
+          function() 
+          {$('a').filter(function(index) { return $(this).text() === "Loading..."; }).text(linktext)}, 1000);
+
+        });;
+
+      ($('#toggleList a')).click(function(e) {
+        e.preventDefault();
+        var url = $(this).attr('href');
+        console.info('url is '+ url)
+
+        if (aladin.getBaseImageLayer().id == url){
+          console.info("launching toggle, setting heatmap")
+          aladin.setImageSurvey(aladin.createImageSurvey(lastHeatMapText, lastHeatMapText, lastHeatMap, 'equatorial', 3));
+          aladin.getBaseImageLayer().getColorMap().update('rainbow');
+          $('a').removeClass('activia');
+          if (isNaN(aladin.getBaseImageLayer().name) && aladin.getBaseImageLayer().id.match('_') == null){
+            $('a').filter(function(index) { return $(this).text() === lastHeatMapText; }).addClass('activia');
+          }
+          else{
+            $( "#year" ).removeClass('hide-element');
+            $( "#year" ).addClass('active');
+          }
+        }
+
+        else {
+          console.info('normal click, setting baselayer.')
+          console.info(aladin.getBaseImageLayer().id)
+          console.info(url)
+          if (aladin.getBaseImageLayer().rootUrl.substring(0, 22) == "http://cdsannotations."){
+            lastHeatMap = aladin.getBaseImageLayer().rootUrl
+            lastHeatMapText = aladin.getBaseImageLayer().name              
+          }
+          aladin.setImageSurvey(url);
+        }
+
+        });;
+
+      ($('#selectBtn')).click(function() {
+         output_objects = '';
+         cat.deselectAll();
+         cat.show();
+         $('#explain-note').html("Drag a rectangle in the viewer to select some objects and display the relative articles");
+         // start selection
+         aladin.select();
+        });;
+
+      function deslectFacets() {
+          //update highlight
+          $("#facetsList a").each(function(index) {
+              $(this).attr('class', '');
+          });
+          $("#year").hide();
+      }
+
+
+      $(function() {
+
+        $("#slider-year").slider({
+            min: 0,
+            max: years.length - 1,
+            value: years.length / 2,
+            slide: function(event, ui) {
+                var layer = years[ui.value];
+                var display = layer.slice(5, layer.length - 4);
+
+                $('a').removeClass('activia');            
+                $( "#year" ).val( ui.value );
+                $( "#year" ).removeClass('hide-element');
+                $( "#year" ).addClass('active');
+
+                console.info(display)
+                url = 'http://cdsannotations.u-strasbg.fr/ADSAllSkySurvey/SimbadHeatMaps/healpix/date-' + display
+                aladin.setImageSurvey(aladin.createImageSurvey(display, display, url, 'equatorial', 3));
+                aladin.getBaseImageLayer().getColorMap().update('rainbow');
+
+                $("#year").val(display);
+
+                //deslectFacets();
+                //$("#year").show().text(display);
+            }
+        });
+
+
+        $( "#slider-range-max" ).slider({
+          range: "max",
+          min: 1850,
+          max: 2013,
+          value: 1990,
+          slide: function( event, ui ) {
+            $('a').removeClass('activia');            
+            $( "#year" ).val( ui.value );
+            $( "#year" ).removeClass('hide-element');
+            $( "#year" ).addClass('active');
+            var yearval = $( "#slider-range-max").slider("value");
+            //TODO: fix this nastiness
+            if (yearval >= 1850 && yearval < 1900){
+              var url = 'http://cdsannotations.u-strasbg.fr/ADSAllSkySurvey/SimbadHeatMaps/healpix/date-1850_1900' 
+            }
+            else if (yearval > 1899 && yearval < 1910){
+              var url = 'http://cdsannotations.u-strasbg.fr/ADSAllSkySurvey/SimbadHeatMaps/healpix/date-1900_1910' 
+            }
+            else if (yearval > 1909 && yearval < 1920){
+              var url = 'http://cdsannotations.u-strasbg.fr/ADSAllSkySurvey/SimbadHeatMaps/healpix/date-1910_1920' 
+            }
+            else if (yearval > 1919 && yearval < 1930){
+              var url = 'http://cdsannotations.u-strasbg.fr/ADSAllSkySurvey/SimbadHeatMaps/healpix/date-1920_1930' 
+            }
+            else if (yearval > 1929 && yearval < 1940){
+              var url = 'http://cdsannotations.u-strasbg.fr/ADSAllSkySurvey/SimbadHeatMaps/healpix/date-1930_1940' 
+            }
+            else if (yearval > 1939 && yearval < 1945){
+              var url = 'http://cdsannotations.u-strasbg.fr/ADSAllSkySurvey/SimbadHeatMaps/healpix/date-1940_1945' 
+            }
+            else if (yearval > 1944 && yearval < 1950){
+              var url = 'http://cdsannotations.u-strasbg.fr/ADSAllSkySurvey/SimbadHeatMaps/healpix/date-1945_1950' 
+            }
+            else if (yearval > 1949 && yearval < 1955){
+              var url = 'http://cdsannotations.u-strasbg.fr/ADSAllSkySurvey/SimbadHeatMaps/healpix/date-1950_1955' 
+            }
+            else if (yearval > 1954 && yearval < 1960){
+              var url = 'http://cdsannotations.u-strasbg.fr/ADSAllSkySurvey/SimbadHeatMaps/healpix/date-1955_1960' 
+            }
+            else if (yearval > 1959 && yearval < 1965){
+              var url = 'http://cdsannotations.u-strasbg.fr/ADSAllSkySurvey/SimbadHeatMaps/healpix/date-1960_1965' 
+            }
+            else if (yearval > 1964 && yearval < 1970){
+              var url = 'http://cdsannotations.u-strasbg.fr/ADSAllSkySurvey/SimbadHeatMaps/healpix/date-1965_1970' 
+            }
+            else if (yearval > 1969 && yearval < 1975){
+              var url = 'http://cdsannotations.u-strasbg.fr/ADSAllSkySurvey/SimbadHeatMaps/healpix/date-1970_1975' 
+            }
+            else if (yearval > 1974 && yearval < 1980){
+              var url = 'http://cdsannotations.u-strasbg.fr/ADSAllSkySurvey/SimbadHeatMaps/healpix/date-1975_1980' 
+            }
+            else if (yearval > 1979 && yearval < 1985){
+              var url = 'http://cdsannotations.u-strasbg.fr/ADSAllSkySurvey/SimbadHeatMaps/healpix/date-1980_1985' 
+            }
+            else if (yearval > 1984 && yearval < 1990){
+              var url = 'http://cdsannotations.u-strasbg.fr/ADSAllSkySurvey/SimbadHeatMaps/healpix/date-1985_1990' 
+            }
+            else if(yearval > 1989){
+              var url = 'http://cdsannotations.u-strasbg.fr/ADSAllSkySurvey/SimbadHeatMaps/healpix/date-' + yearval
+            }
+            aladin.setImageSurvey(aladin.createImageSurvey(yearval, yearval, url, 'equatorial', 3));
+            aladin.getBaseImageLayer().getColorMap().update('rainbow');
+          }
+        });
+        $( "#year" ).val( $( "#slider-range-max" ).slider( "value" ) );
+
+      });
+
+    });
+
+$(function() {
+
+  $('#wwt-link').click(function(e) {
+      e.preventDefault();
+      var ra = aladin.view.viewCenter.lon,
+          dec = aladin.view.viewCenter.lat,
+          fov = aladin.view.fov,
+          layer = aladin.getBaseImageLayer().name + "_512";
+
+      var url = $('#wwt-link').attr('href') + '?ra=' + ra + '&dec=' + dec +
+          '&fov=' + fov + '&layer=' + layer;
+      console.log(url, e)
+      window.open(url);
+  });
+
+});
+
+  function startIntrojs()
+  {
+    introJs().start();
+  }
+
+</script>
+
+      </HTML>
+
+
+
+

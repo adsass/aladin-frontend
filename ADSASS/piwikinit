@@ -1,0 +1,2 @@
+var pkBaseURL = (("https:" == document.location.protocol) ? "https://cdsannotations.u-strasbg.fr/piwik/" : "http://cdsannotations.u-strasbg.fr/piwik/");
+document.write(unescape("%3Cscript src='" + pkBaseURL + "piwik.js' type='text/javascript'%3E%3C/script%3E"));
