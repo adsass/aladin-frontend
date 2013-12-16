@@ -59,39 +59,42 @@
 
 <!-- Docs nav
 ================================================== -->
+
 <div class="container">
 
-<div class="well">
+<div class="row">
 
-  <button data-step="10" data-position="left" data-intro="Last, but not least: how about using this map as a visual search tool? Click here and drag a rectangular shape around the objects you are interested in. You will get a list of selected objects and the papers that discuss them." type="button" class="btn btn-danger pull-right" style="margin:0 10 0 10" id="selectBtn">Select tool</button>
+<div class="col-md-3">
+
+<div class="well">
 
   <div data-step="4" data-intro="This map is based on virtually ALL papers ever published in astronomy. But you can filter the articles shown in this map using facets." class="well-title">FILTER BY</div>
 
    <span id="facetsList">
-      <span class="label label-info">Object</span> 
+      <h4>Object</h4> 
         <a class="activia" href="http://cdsannotations.u-strasbg.fr/ADSAllSkySurvey/SimbadHeatMaps/healpix/allSources">All</a>&nbsp;
         <a data-step="5" data-intro="For example, click on <b>Stars</b> to visualize only articles written about stars." href="http://cdsannotations.u-strasbg.fr/ADSAllSkySurvey/SimbadHeatMaps/healpix/Star">Stars</a>&nbsp;
         <a href="http://cdsannotations.u-strasbg.fr/ADSAllSkySurvey/SimbadHeatMaps/healpix/Galaxy">Galaxies</a>&nbsp;
         <a href="http://cdsannotations.u-strasbg.fr/ADSAllSkySurvey/SimbadHeatMaps/healpix/HII-region">HII regions</a>&nbsp;
         <a href="http://cdsannotations.u-strasbg.fr/ADSAllSkySurvey/SimbadHeatMaps/healpix/Nebula">Nebulae</a>&nbsp;
         <a href="http://cdsannotations.u-strasbg.fr/ADSAllSkySurvey/SimbadHeatMaps/healpix/Other">Other</a>&nbsp;&nbsp;&nbsp;&nbsp;
-      <br><span class="label label-info">Band</span> 
+      <br><br><h4>Band</h4> 
         <a data-step="6" data-intro="Facets also work for bandwidth. For example, click on Radio, to see how the sky looks to radio astronomers (based on their scholarly output)" href="http://cdsannotations.u-strasbg.fr/ADSAllSkySurvey/SimbadHeatMaps/healpix/Radio">Radio</a>&nbsp;
         <a href="http://cdsannotations.u-strasbg.fr/ADSAllSkySurvey/SimbadHeatMaps/healpix/Infrared">Infrared</a>&nbsp;
         <a href="http://cdsannotations.u-strasbg.fr/ADSAllSkySurvey/SimbadHeatMaps/healpix/UV">Ultraviolet</a>&nbsp;
         <a href="http://cdsannotations.u-strasbg.fr/ADSAllSkySurvey/SimbadHeatMaps/healpix/X">X-ray</a>&nbsp;&nbsp;&nbsp;&nbsp;  
-      <br><span class="label label-info">Custom</span> 
+      <br><br><h4>Custom</h4> 
         <a data-step="8" data-intro="We have some custom facets too. For example, click here to show what parts of the sky have been studied by authors of the <b>Harvard-Smithsonian Center for Astrophysics</b>" href="http://cdsannotations.u-strasbg.fr/ADSAllSkySurvey/harvard-ads-authors/HiPS">Harvard/CfA</a>&nbsp;&nbsp;&nbsp;&nbsp;
   </span>
 
-  <br><span class="label label-info">Year </span>
+  <br><br><h4>Year </h4>
     <div data-step="7" data-intro="Interested in a specific timeframe? Move the year slider and display how the sky looked in 2000, 1990, or 1850(!), for example, based on astronomy articles published in those years." style="margin-left:14px; display: inline-block;" id="slider-year"></div><input type="text" id="year" class="hide-element" style="margin-left: 8px;   font-weight: bold; color: #ffffff;background-color: #b6b6b6;padding: 2px;border: 1px dashed darkgray;border-radius: 5px; width: 85px;" />
 
     <!-- TODO temporarily hiding note
     <div id="explain-note"></div> -->
 
 
-  <div style="margin-top:10px" class="well-title">TOGGLE BASE LAYER</div>
+  <div style="margin-top:30px" class="well-title">TOGGLE BASE LAYER</div>
 
    <span id="toggleList">
         <a href="P/Mellinger/color">Mellinger</a>&nbsp;  
@@ -104,15 +107,19 @@
         <a href="P/VTSS/Ha">VTSS</a>&nbsp;  
   </span>
 
+  <div style="margin-top:30px">
+  <button data-step="10" data-position="right" data-intro="Last, but not least: how about using this map as a visual search tool? Click here and drag a rectangular shape around the objects you are interested in. You will get a list of selected objects and the papers that discuss them." type="button" class="btn btn-block btn-danger" id="selectBtn">Select tool</button>
+  </div>
+
 </div>
 
-<div class="row">
+</div>
 
-  <div class="span12">
+<div class="col-md-8">
 
-    <div data-step="3" data-position="top" data-intro="This is a heatmap of the sky built from astronomy articles. The more an object position is referenced in the literature, the <em>hotter</em> it is. Cool, no?" ></div>
+    <div data-step="3" data-position="bottom" data-intro="This is a heatmap of the sky built from astronomy articles. The more an object position is referenced in the literature, the <em>hotter</em> it is. Cool, no?" ></div>
     <!-- insert this snippet where you want Aladin Lite viewer to appear and after the loading of jQuery -->
-    <div id="aladin-lite-div" style="width:1200px;height:520px;"></div>
+    <div id="aladin-lite-div" style="width:700px;height:700px;"></div>
 
 
     <!-- Modal -->
@@ -153,15 +160,14 @@
 
   </div>
 </div>
-
-</div> <!-- container -->
+</div>
     <!-- Footer
     ================================================== -->
 
     <div id="footer">
       <div class="container"><center>
         <h4 data-step="11" data-position="top" data-intro="Like most stuff in science, the ADSASS is a truly collaborative effort. We thank very much our friends, colleagues, and funders. We use the ADS as our bibliographic source and the CDS as our object database. The cool visualization tools showcased here are Aladin Lite by the Strasbourg astronomical Data Center (CDS) and the Microsoft Research World Wide Telescope. Enjoy!" >ADS All-Sky Survey is a NASA-funded project</h4>
-        <p class="text-muted credit" style="max-width:700px">The ADSASS is a collaboration of the Harvard-Smithsonian Center for Astrophysics, Harvard University, the Strasbourg astronomical Data Center (CDS), and Microsoft Research. </p> <a href="http://projects.iq.harvard.edu/seamlessastronomy/">Seamless Astronomy</a>&nbsp;·&nbsp;<a href="http://adslabs.org">ADS Labs</a>&nbsp;·&nbsp;<a href="http://cdsweb.u-strasbg.fr/">CDS</a>
+        <p class="text-muted credit">The ADSASS is a collaboration of the Harvard-Smithsonian Center for Astrophysics, Harvard University, the Strasbourg astronomical Data Center (CDS), and Microsoft Research. </p> <a href="http://projects.iq.harvard.edu/seamlessastronomy/">Seamless Astronomy</a>&nbsp;·&nbsp;<a href="http://adslabs.org">ADS Labs</a>&nbsp;·&nbsp;<a href="http://cdsweb.u-strasbg.fr/">CDS</a>
       </center></div>
     </div>
 
