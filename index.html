@@ -207,7 +207,7 @@
 
     var aladin = $.aladin('#aladin-lite-div', {survey: "P/Mellinger/color", zoom: fov});
 
-    if (layer=="harvard"){
+    if (layer.toLowerCase() == "harvard"){
       aladin.setImageSurvey(aladin.createImageSurvey(layer, layer, "http://cdsannotations.u-strasbg.fr/ADSAllSkySurvey/harvard-ads-authors/HiPS", 'equatorial', 3)); 
     }
     else{
@@ -493,7 +493,7 @@ $(function() {
       var ra = aladin.view.viewCenter.lon,
           dec = aladin.view.viewCenter.lat,
           fov = aladin.view.fov;
-          if (aladin.getBaseImageLayer().name == "Harvard"){
+          if (aladin.getBaseImageLayer().name.toLowerCase() == "harvard"){
             layer = 'harvard';
           }
           else{
