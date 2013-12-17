@@ -84,7 +84,7 @@
         <a href="http://cdsannotations.u-strasbg.fr/ADSAllSkySurvey/SimbadHeatMaps/healpix/UV">Ultraviolet</a>&nbsp;
         <a href="http://cdsannotations.u-strasbg.fr/ADSAllSkySurvey/SimbadHeatMaps/healpix/X">X-ray</a>&nbsp;&nbsp;&nbsp;&nbsp;  
       <br><br><h4>Custom</h4> 
-        <a data-step="8" data-intro="We have some custom facets too. For example, click here to show what parts of the sky have been studied by authors of the <b>Harvard-Smithsonian Center for Astrophysics</b>" href="http://cdsannotations.u-strasbg.fr/ADSAllSkySurvey/harvard-ads-authors/HiPS">Harvard/CfA</a>&nbsp;&nbsp;&nbsp;&nbsp;
+        <a data-step="8" data-intro="We have some custom facets too. For example, click here to show what parts of the sky have been studied by authors of the <b>Harvard-Smithsonian Center for Astrophysics</b>" href="http://cdsannotations.u-strasbg.fr/ADSAllSkySurvey/harvard-ads-authors/HiPS">Harvard</a>&nbsp;&nbsp;&nbsp;&nbsp;
   </span>
 
   <br><br><h4>Year </h4>
@@ -206,7 +206,14 @@
     var layer = (getParameter('layer') || 'allSources');
 
     var aladin = $.aladin('#aladin-lite-div', {survey: "P/Mellinger/color", zoom: fov});
-    aladin.setImageSurvey(aladin.createImageSurvey(layer, layer, "http://cdsannotations.u-strasbg.fr/ADSAllSkySurvey/SimbadHeatMaps/healpix/" + layer, 'equatorial', 3));
+
+    if (layer=="harvard"){
+      aladin.setImageSurvey(aladin.createImageSurvey(layer, layer, "http://cdsannotations.u-strasbg.fr/ADSAllSkySurvey/harvard-ads-authors/HiPS", 'equatorial', 3)); 
+    }
+    else{
+      aladin.setImageSurvey(aladin.createImageSurvey(layer, layer, "http://cdsannotations.u-strasbg.fr/ADSAllSkySurvey/SimbadHeatMaps/healpix/" + layer, 'equatorial', 3));      
+    }
+
     aladin.getBaseImageLayer().getColorMap().update('rainbow');
     aladin.gotoPosition(ra, dec)
 
@@ -485,9 +492,13 @@ $(function() {
       e.preventDefault();
       var ra = aladin.view.viewCenter.lon,
           dec = aladin.view.viewCenter.lat,
-          fov = aladin.view.fov,
-          layer = aladin.getBaseImageLayer().name + "_512";
-
+          fov = aladin.view.fov;
+          if (aladin.getBaseImageLayer().name == "Harvard"){
+            layer = 'harvard';
+          }
+          else{
+            layer = aladin.getBaseImageLayer().name + "_512";
+          }
       var url = $('#wwt-link').attr('href') + '?ra=' + ra + '&dec=' + dec +
           '&fov=' + fov + '&layer=' + layer;
       console.log(url, e)
