@@ -41,3 +41,17 @@ h5{line-height: 12px;}
 .aladin-location-text{
   margin-left: 20px;
 }
+
+a { white-space: nowrap; }
+
+.tooltip {
+    background-color: none !important;
+}
+
+.tooltip-inner {
+    background-color: rgb(120, 120, 120) !important;
+}
+
+.tooltip.bottom .tooltip-arrow{
+    border-bottom-color: rgb(57, 57, 57);
+}

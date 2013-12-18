@@ -79,7 +79,7 @@
         <a href="http://cdsannotations.u-strasbg.fr/ADSAllSkySurvey/SimbadHeatMaps/healpix/Nebula" rel="tooltip" title="All papers referencing nebulae">Nebulae</a>&nbsp;
         <a href="http://cdsannotations.u-strasbg.fr/ADSAllSkySurvey/SimbadHeatMaps/healpix/Other" rel="tooltip" title="All papers referencing uncategorized objects">Other</a>
       <br><br><h4>Band</h4> 
-        <a data-step="6" data-intro="Facets also work for bandwidth. For example, click on Radio, to see how the sky looks to radio astronomers (based on their scholarly output)" href="http://cdsannotations.u-strasbg.fr/ADSAllSkySurvey/SimbadHeatMaps/healpix/Radio" rel="tooltip" title="All papers referencing objects in the radio band">Radio</a>&nbsp;
+        <a data-step="6" data-intro="Facets also work for wavelength. For example, click on Radio, to see how the sky looks to radio astronomers (based on their scholarly output)" href="http://cdsannotations.u-strasbg.fr/ADSAllSkySurvey/SimbadHeatMaps/healpix/Radio" rel="tooltip" title="All papers referencing objects in the radio band">Radio</a>&nbsp;
         <a href="http://cdsannotations.u-strasbg.fr/ADSAllSkySurvey/SimbadHeatMaps/healpix/Infrared" rel="tooltip" title="All papers referencing objects in the IR band">Infrared</a>&nbsp;
         <a href="http://cdsannotations.u-strasbg.fr/ADSAllSkySurvey/SimbadHeatMaps/healpix/UV" rel="tooltip" title="All papers referencing objects in the UV band">Ultraviolet</a>&nbsp;
         <a href="http://cdsannotations.u-strasbg.fr/ADSAllSkySurvey/SimbadHeatMaps/healpix/X" rel="tooltip" title="All papers referencing objects in the X-ray band">X-ray</a>
@@ -97,8 +97,8 @@
   <div style="margin-top:30px" class="well-title">TOGGLE BASE LAYER</div>
 
    <span id="toggleList">
+        <a href="P/DSS2/color" rel="tooltip" title="Toggle Digitized Sky Survey map">Optical</a>&nbsp;  
         <a href="P/Mellinger/color" rel="tooltip" title="Toggle Mellinger color map">Mellinger</a>&nbsp;  
-        <a href="P/DSS2/color" rel="tooltip" title="Toggle Digitized Sky Survey map">DSS</a>&nbsp;  
         <a href="P/GALEXGR6/AIS/color" rel="tooltip" title="Toggle MAST Galex map">GALEX AIS</a>&nbsp;  
         <a href="P/DSS2/red" rel="tooltip" title="Toggle Digitized Sky Survey 2 Red map">DSS2 Red</a>&nbsp;  
         <a href="P/IRIS/color" rel="tooltip" title="Toggle Improved IRIS Infrared map">IRIS</a>&nbsp;  
@@ -513,7 +513,7 @@ $(function() {
   }
 
     $(document).ready(function () {
-      $("[rel=tooltip]").tooltip({'placement': 'right'});
+      $("[rel=tooltip]").tooltip({'placement': 'bottom'});
     });
 
 </script>
