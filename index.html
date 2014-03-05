@@ -508,7 +508,7 @@ $(function() {
             layer = 'harvard';
           }
           else{
-            layer = aladin.getBaseImageLayer().name + "_512";
+            layer = aladin.getBaseImageLayer().rootUrl.split('/').pop();
           }
       var url = $('#wwt-link').attr('href') + '?ra=' + ra + '&dec=' + dec +
           '&fov=' + fov + '&layer=' + layer;
