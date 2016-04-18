@@ -128,7 +128,7 @@
         <div class="modal-content">
           <div class="modal-header">
             <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
-            <h4 class="modal-title">Selected papers/objects &nbsp;&nbsp;<span id="explain-biblist"></span></h4>
+            <h4 class="modal-title">Selected papers/objects &nbsp;&nbsp;<span id="explain-openlists"></span></h4>
           </div>
           <div class="modal-body">
 
@@ -273,10 +273,12 @@
           var biblist = [];
           truncated = false;
 
-          //trim list of papers to 120 to avoid URL too long to fail
-          if (uresult.length > 201){
+          //trim list of papers to 1000 to avoid unwieldy behavior in the UI
+	  // (note however that ADS bumblebee now takes lists of any size)
+          max_papers = 1000
+          if (uresult.length > max_papers){
             truncated = true;
-            paper_length = 201;
+            paper_length = max_papers;
           }
           else{
             paper_length = uresult.length;
@@ -284,25 +286,43 @@
           }
 
           if (truncated){
-            output += "<p class='small text-danger'>Note: List truncated to 200 most recent papers</p>"
+            output += "<p class='small text-danger'>Note: List truncated to " + max_papers + " most recent papers</p>"
           }
 
 
           for (var i = 0; i < paper_length; i++) {
               if (!!uresult[i]){ 
-                output += '<a target="_blank" href="http://adsabs.harvard.edu/abs/' + encodeURIComponent(uresult[i].split('|')[0]) + '">' + uresult[i].split('|')[1].trim() + ' ' + uresult[i].split('|')[2].trim() + '</a><br>';
-                biblist.push(encodeURIComponent(uresult[i].split('|')[0]))
+                output += '<a target="_blank" href="http://ui.adsabs.harvard.edu/#abs/' + encodeURIComponent(uresult[i].split('|')[0].trim()) + '">' + uresult[i].split('|')[1].trim() + ' ' + uresult[i].split('|')[2].trim() + '</a><br>';
+                biblist.push(uresult[i].split('|')[0].trim())
               }
           }
 
           output_objects_page = "<h1>Object list</h1>" + output_objects
 
-          biblist = biblist + "";
-          biblist = biblist.replace(/\,/g, 'OR%20');
-          biblist = '<a class="btn btn-default" type="button" target="_blank" href="http://labs.adsabs.harvard.edu/ui/cgi-bin/topicSearch?q=bibcode:(' + biblist + ')">Open papers in ADS</a>&nbsp;<a class="btn btn-default" type="button" href="javascript:void(0);" onclick="var x=window.open();x.document.open();x.document.write(output_objects_page);x.document.close();">Open object list</a>';
+          openlists = '<a id="ads-btn" class="btn btn-default" type="button" target="_blank" href="#">Open papers in ADS</a>&nbsp;<a class="btn btn-default" type="button" href="javascript:void(0);" onclick="var x=window.open();x.document.open();x.document.write(output_objects_page);x.document.close();">Open object list</a>';
 
-          $('#explain-biblist').html(biblist);
+          $('#explain-openlists').html(openlists);
 
+          // link to ADS bumblebee via POST redirection service
+          $('#ads-btn').click(function() {
+	      $.ajax({
+ 		  type: 'POST',
+		  url: 'http://adsabs.harvard.edu/view/redirect',
+		  data: JSON.stringify(biblist),
+		  contentType: 'application/json; charset=utf-8',
+		  dataType: 'json',
+		  success: function(data, textStatus) {
+		      if (data.redirect) {
+			  // data.redirect contains the string URL to redirect to
+			  window.location.href = data.redirect;
+		      } else {
+			  console.error('Redirect failed' + data);
+		      }
+		  }
+	      });
+	      return false;
+	  });
+			     
           $('#explain').html(output);
 
           $('#explain-objects').html(output_objects);
