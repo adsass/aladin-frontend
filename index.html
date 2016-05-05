@@ -290,7 +290,7 @@
           }
 
 
-          for (var i = 0; i < paper_length; i++) {
+          for (var i = 0; i <= paper_length; i++) {
               if (!!uresult[i]){ 
                 output += '<a target="_blank" href="http://ui.adsabs.harvard.edu/#abs/' + encodeURIComponent(uresult[i].split('|')[0].trim()) + '">' + uresult[i].split('|')[1].trim() + ' ' + uresult[i].split('|')[2].trim() + '</a><br>';
                 biblist.push(uresult[i].split('|')[0].trim())
@@ -314,7 +314,7 @@
 		  success: function(data, textStatus) {
 		      if (data.redirect) {
 			  // data.redirect contains the string URL to redirect to
-			  window.location.href = data.redirect;
+			  window.open(data.redirect, "_blank");
 		      } else {
 			  console.error('Redirect failed' + data);
 		      }
